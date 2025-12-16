@@ -1,0 +1,18 @@
+Comandos para instalar miniconda
+
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+./Miniconda3-latest-Linux-x86_64.sh
+
+export PATH=~/miniconda/bin:$PATH
+
+
+***
+Generación del entorno conda para BERT
+
+  185  conda create -n bert2 python=3.6
+  186  conda activate bert2
+  188  pip3 install tensorflow==1.15.0
+  189  pip3 install -U bert-serving-server bert-serving-client
+  190  bert-serving-start -model_dir pretrainedModels/uncased_L-12_H-768_A-12/ -num_worker=4
+
