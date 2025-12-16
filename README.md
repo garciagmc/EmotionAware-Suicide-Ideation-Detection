@@ -2,7 +2,7 @@
 **Suicidal Ideation Detection via Temporal Emotional Dynamics Analysis in Text Notes**
 | Detail | Value |
 | :--- | :--- |
-| **Author(s)** | García-Galindo, María del Carmen; Hernández-Catsañeda, Ángel |
+| **Author(s)** | García-Galindo, María del Carmen; Hernández-Castañeda, Ángel |
 | **Affiliation** | Autonomous University of Mexico State (UAEMex) |
 | **Date** | December 2025 |
 
