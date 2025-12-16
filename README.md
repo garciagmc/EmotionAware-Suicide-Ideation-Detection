@@ -15,15 +15,15 @@ No Substitute for Professional Diagnosis: The results of this model should NOT b
 # System Requirements and Dependencies
 To replicate the results of this research, you need Python 3.6 and the following libraries.
 
-- 1 Environment Setup
+- Environment Setup
   git clone https://github.com/garciagmc/EmotionAware-Suicide-Ideation-Detection.git
   cd EmotionAware-Suicide-Ideation-Detection
 
-- 2 Create and activate the virtual environment (Conda recommended):
+- Create and activate the virtual environment (Conda recommended):
   conda create --name emotionAware python=3.6
   conda activate emotionAware
 
-- 3 Install dependencies:
+- Install dependencies:
   pip install -r requirements.txt
 
 # Required Data Structure
@@ -35,7 +35,8 @@ Input File Format
   Delimiter: Hash (#)
   Required Columns (with # separator emphasis): Texts and Label#
 
-# Workflow: This guide outlines the six steps required to process the corpus, train the intermediate emotion classifier, generate temporal emotion features, and finally train the main suicide ideation detector.
+# Workflow
+This guide outlines the six steps required to process the corpus, train the intermediate emotion classifier, generate temporal emotion features, and finally train the main suicide ideation detector.
 
 - Step 1: Data Preparation and Splitting: The first step is to process the raw corpora (CEASE for emotion, and the suicide ideation corpus) to separate the text content from their respective labels into distinct files.
   Action: Run the appropriate data adaptation script.
@@ -65,8 +66,8 @@ Input File Format
   Goal: Create sentence-level vectors for the suicide and not_suice texts.
   Location: Execute the script from the Embeddings/<type of embedding-TFIDF/Doc2Vec/LDA-LSI> directory.
   Commands (Separate Execution):
-    # For suicide texts: python3 loadTfidfVectorsSentLevel.py ../../adaptData/suicide/sentencesSuicideIdeation.txt           ../../adaptData/suicide/labelsSuicideIdeation.txt ../../adaptData/suicide/Suicide
-  # For Not_suicide texts: python3 loadTfidfVectorsSentLevel.py ../../adaptData/suicide/sentencesNotSuicideIdeation.txt ../../adaptData/suicide/labelsNotSuicideIdeation.txt ../../adaptData/suicide/NotSuicide
+    - For suicide texts: python3 loadTfidfVectorsSentLevel.py ../../adaptData/suicide/sentencesSuicideIdeation.txt           ../../adaptData/suicide/labelsSuicideIdeation.txt ../../adaptData/suicide/Suicide
+    - For Not_suicide texts: python3 loadTfidfVectorsSentLevel.py ../../adaptData/suicide/sentencesNotSuicideIdeation.txt ../../adaptData/suicide/labelsNotSuicideIdeation.txt ../../adaptData/suicide/NotSuicide
 
 - Step 5: Load sentiment Model and Generate Emotion Vectors: The sentiment model trained in Step 3 is now loaded to process the suicide data vectors (from Step 4) and generate emotion vectors for each text. These vectors represent the dynamic sequence of emotional changes.
 
@@ -74,8 +75,8 @@ Input File Format
   Location: Execute the script from the suicideProject/sentimentAnalisys/ directory.
   Script: loadSentimentModel.py
   Commands:
-    # For not_suicide: python3 loadSentimentModel.py NotSuicideIdeationSentiments ../adaptData/suicide/NotSuicideembedsSent.obj
-    # For suicide_texts: python3 loadSentimentModel.py suicideIdeationSentiments ../adaptData/suicide/SuicideembedsSent.obj
+    - For not_suicide: python3 loadSentimentModel.py NotSuicideIdeationSentiments ../adaptData/suicide/NotSuicideembedsSent.obj
+    - For suicide_texts: python3 loadSentimentModel.py suicideIdeationSentiments ../adaptData/suicide/SuicideembedsSent.obj
 
 Step 6: Final Suicide Ideation Classification: The final step uses the emotion vectors (the dynamic features) as input to the main classification model.
     Goal: Train and evaluate the Suicide Ideation Detector (LSTM).
