@@ -1,7 +1,0 @@
-Liga del conjunto de datos de emociones en tweets
-
-https://www.kaggle.com/datasets/pashupatigupta/emotion-detection-from-text?resource=download
-
-emotion_dataset_raw
-
-https://github.com/SannketNikam/Emotion-Detection-in-Text
