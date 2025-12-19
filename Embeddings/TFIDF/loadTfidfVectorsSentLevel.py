@@ -11,8 +11,6 @@ from gensim.utils import tokenize
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 from nltk.tokenize import sent_tokenize
 
-
-
 pathSentences = sys.argv[1] #Recibe path de los documentos (un documento por línea)
 pathLabels = sys.argv[2] #Recibe las etiquetas correspondientes a los documentos
 pathOut = sys.argv[3] #Recibe la ruta de salida y nombre del archivo que contendrá los vectores y etiqueta
