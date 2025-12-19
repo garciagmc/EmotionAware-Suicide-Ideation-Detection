@@ -3,18 +3,11 @@
 import logging
 import multiprocessing
 from pprint import pprint
-
 import smart_open
 from gensim.corpora.wikicorpus import WikiCorpus, tokenize
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
-
-#from gensim.models import LdaModel
-
 from gensim.test.utils import get_tmpfile
 
-logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
-
-#Preparing corpus
 
 wiki = WikiCorpus(
     "../Corpus/enwiki-latest-pages-articles.xml.bz2",  # path to the file you downloaded above
@@ -80,7 +73,6 @@ model_dm.train(documents, total_examples=model_dm.corpus_count, epochs=model_dm.
 
 model_dbow.save("model/doc2vec.dbowModel")
 model_dm.save("model/doc2vec.dmModel")
-
 
 #for model in [model_dbow, model_dm]:
 #    print(model)
