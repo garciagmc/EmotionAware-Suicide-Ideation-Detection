@@ -16,10 +16,6 @@ fileLabels = open(pathLabels,"r")
 fileOutEmbeds = open(pathOut+"embeds.obj","wb")
 fileOutLabels = open(pathOut+"labels.obj","wb")
 
-
-
-
-
 documents = []
 labels = []
 ind = 0
