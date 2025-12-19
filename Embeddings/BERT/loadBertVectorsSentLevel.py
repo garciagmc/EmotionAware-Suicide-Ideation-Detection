@@ -14,7 +14,6 @@ pathSentences = sys.argv[1] #Recibe path de los documentos (un documento por lí
 pathLabels = sys.argv[2] #Recibe las etiquetas correspondientes a los documentos
 pathOut = sys.argv[3] #Recibe la ruta de salida y nombre del archivo que contendrá los vectores y etiqueta
 
-
 fileDocuments = open(pathSentences,"r")
 fileLabels = open(pathLabels,"r")
 fileOutEmbeds = open(pathOut+"embedsSent.obj","wb")
