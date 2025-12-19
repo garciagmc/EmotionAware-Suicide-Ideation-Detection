@@ -1,0 +1,33 @@
+1.- Process corpora using the script `processCEASE` or `processSuicide` in the `adaptData` folder.
+	The scripts separate the texts from their labels in the CSV files. They create a text file and a labels file in the folders (emotionsCEASE or suicide).
+
+2.- Generate the embeddings to train the emotion classifier. The models from the folder Embeddings/<embedding-type-TFIDF/Doc2Vec/LDA-LSI> are used. The paths to the sentences and labels (both .txt files) are passed as arguments.
+	-- python3 generateTfidfVectors.py ../../adaptData/emotionsCEASE/sentencesCEASE.txt ../../adaptData/emotionsCEASE/labelsCEASE.txt ../../adaptData/emotionsCEASE/  No llamar al script que parte los documentos en oraciones, esto es para el corpus de suicidio.
+
+This generates two binary files with the .obj extension, containing the vector representations of the texts as Python lists.
+
+3.-Using the generated vectors, an emotion classifier is trained (trainSentimentClassifier.py) from the script path suicideProject/sentimentAnalisys/
+
+	--python3 trainSentimentClassifier.py
+This produces an F-measure table obtained during training and saves the model for later use.
+
+4- Now, the vectors representing suicidal and non-suicidal notes must be generated from the folder Embeddings/<embedding-type-TFIDF/Doc2Vec/LDA-LSI>. The paths to the sentences and labels (both .txt files) are passed as arguments. This is done using texts of suicidal ideation and non-ideation. It is necessary to perform this at the sentence level because the generated vectors will be fed into the LSTM network.
+
+	--python3 loadTfidfVectorsSentLevel.py ../../adaptData/suicide/sentencesSuicideIdeation.txt ../../adaptData/suicide/labelsSuicideIdeation.txt ../../adaptData/suicide/Suicide
+
+	--python3 loadTfidfVectorsSentLevel.py ../../adaptData/suicide/sentencesNotSuicideIdeation.txt ../../adaptData/suicide/labelsNotSuicideIdeation.txt ../../adaptData/suicide/NotSuicide
+
+5.- It is now possible to load the sentiment model that will generate emotion vectors from the path suicideProject/sentimentAnalisys/ (loadSentimentModel.py) for each suicidal and non-suicidal ideation text (improvements are needed to avoid changes in the paths as it is currently).
+	-  python3 loadSentimentModel.py NotSuicideIdeationSentiments ../adaptData/suicide/NotSuicideembedsSent.obj
+	-- python3 loadSentimentModel.py suicideIdeationSentiments ../adaptData/suicide/SuicideembedsSent.obj
+
+6. Finally, the suicidal ideation classification script can be executed from the path suicideProject/lstm/ (suicideDetector.py).
+
+
+
+If you want to generate splits and K-Folds for reproducible training, after step 5, run splitConcat.py; this script will generate the training and test indices for each fold, save them along with the corresponding metadata, and allow the same splits to be used later for training and evaluating the LSTM with full reproducibility.
+	- Python3 splitConcat.py
+
+
+Finally, the suicidal ideation classification script can be run from the path suicideProject/lstm/ (suicideDetector2.py).
+

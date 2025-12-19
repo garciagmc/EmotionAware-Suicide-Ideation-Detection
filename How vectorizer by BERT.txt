@@ -1,0 +1,16 @@
+-----Activate BERT-as-Service - To run the BERT suicide detector, the vector generation service must be activated first.
+
+Start the service: You need to start the service by passing as an argument the directory where the pre-trained model to be used is located.
+Navigate to the path Embeddings/BERT/ and run the bash script:
+	- --activateCondaforBert.sh
+
+or execute the following commands in a terminal:
+	--conda activate bert2
+	--bert-serving-start -model_dir pretrainedModels/uncased_L-12_H-768_A-12/ -num_worker=4
+
+If the conda environment does not exist, it must be created as follows:
+	--conda create -n bert2 python=3.6
+	--conda activate bert2
+	--pip3 install tensorflow==1.15.0
+	--pip3 install -U bert-serving-server bert-serving-client
+	--bert-serving-start -model_dir pretrainedModels/uncased_L-12_H-768_A-12/ -num_worker=4
